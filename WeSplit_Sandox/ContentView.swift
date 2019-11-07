@@ -12,7 +12,7 @@ struct UsingStacksToArrangeViews: View {
     var body: some View {
         VStack(alignment: .leading,spacing: 20) {
             HStack{
-               Text("Hello World")
+                Text("Hello World")
             }
             
             HStack(spacing: 60) {
@@ -34,13 +34,13 @@ struct AlertShowViewWithTheButtons: View {
         
         VStack {
             Button("Show Alert"){
-            self.showingAlert = true
-        }.font(.largeTitle)
-            .alert(isPresented: $showingAlert){
-                Alert(title: Text("Hello SwiftUI"),
-                      message: Text("This is some detail message"),
-                      dismissButton: .default(Text("OK")))
-        }
+                self.showingAlert = true
+            }.font(.largeTitle)
+                .alert(isPresented: $showingAlert){
+                    Alert(title: Text("Hello SwiftUI"),
+                          message: Text("This is some detail message"),
+                          dismissButton: .default(Text("OK")))
+            }
             Spacer()
         }
     }
@@ -49,43 +49,31 @@ struct AlertShowViewWithTheButtons: View {
 struct ContentView: View {
     var body: some View {
         
-       
-        VStack {
-            AlertShowViewWithTheButtons()
-            UsingStacksToArrangeViews()
-            ColorsAndFrameAtApp()
-            
-            Button(action : {
-                print("Add to cart was tapped")
-            }) {
-                VStack(spacing: 20){
-                    Image(systemName: "cart")
-                    Text("Add to cart")
+        ZStack {
+          
+          Color.red
+          .edgesIgnoringSafeArea(.all)
+          
+            VStack {
+                AlertShowViewWithTheButtons()
+                UsingStacksToArrangeViews()
+              
+                Button(action : {
+                    print("Add to cart was tapped")
+                }) {
+                    VStack(spacing: 20){
+                        Image(systemName: "cart")
+                        Text("Add to cart")
+                    }
+                    .font(.largeTitle)
+                    .foregroundColor(.orange)
                 }
-                .font(.largeTitle)
-                .foregroundColor(.orange)
             }
         }
-      
     }
     
 }
 
-struct ColorsAndFrameAtApp: View{
-    var body: some View{
-        
-        ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
-            LinearGradient(gradient: Gradient(colors: [.purple,         .white]), startPoint:  .top, endPoint: .bottom)
-//            LinearGradient(gradient: Gradient(colors: [.white, .green]), startPoint: .bottom, endPoint: .top)
-//            //Cette partie du code c'est pour donner les coleurs au centre du mobile.
-//            RadialGradient(gradient: Gradient(colors: [.blue, .black]),               center: .center, startRadius: 20, endRadius: 200)
-//            AngularGradient(gradient: Gradient(colors: [.green, .blue,                .orange, .purple, .red]), center: .topLeading)
-        }
-        
-        
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -93,5 +81,5 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-    
+
 
